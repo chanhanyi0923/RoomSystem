@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class StateTableSeeder extends Seeder {
+class StatesTableSeeder extends Seeder {
     public function run() {
         for($i = 0; $i < 10; $i ++) {
             DB::table('states')->insert([

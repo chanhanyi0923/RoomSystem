@@ -8,7 +8,6 @@ use App\Http\Requests;
 use App\Room;
 use App\State;
 use Gate;
-//use App\User;
 
 class RoomController extends Controller {
     public function __construct() {
@@ -30,9 +29,10 @@ class RoomController extends Controller {
         $room->save();
         return 'Finished';
     }
+    /*
     public function show($id) {
-        //
     }
+    */
     public function edit($id) {
         $room = Room::find($id);
         return view('room.edit', ['room' => $room, 'states' => State::all()]);
