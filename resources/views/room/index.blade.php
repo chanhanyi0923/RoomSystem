@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('title')
 RoomStates
@@ -6,7 +6,7 @@ RoomStates
 
 @section('content')
 @can('admin')
-<a href="{{ url('room/create') }}" class="btn btn-default">new</a>
+<a href="{{ url('room/create') }}" class="btn btn-success">Create</a>
 @endcan
 <div class="row">
 	@foreach ($rooms as $room)
@@ -15,19 +15,24 @@ RoomStates
 			array('default', 'primary', 'success', 'info', 'warning', 'danger')[ $room->state['color'] ]
 		}}">
 			<div class="panel-heading">
-				<h3 class="panel-title">{{ $room->id }} -> RoomNumber {{ $room->number }}</h3>
+				<h3 class="panel-title">房號 : {{ $room->number }}</h3>
 			</div>
 			<div class="panel-body">
-				label = {{ $room->state->label }}<br>
-				color = {{ $room->state->color }}
-				<a href="{{ url('room/'.$room->id.'/edit') }}" class="btn btn-success">edit</a>
-				@can('admin')
-				<form action="{{ url('room/'.$room->id) }}" method="post" style="display:inline;">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<button type="submit" class="btn btn-danger">delete</button>
-				</form>
-				@endcan
+				<h2>{{ $room->state->label }}</h2>
+				@if(Auth::check())
+				<hr>
+				<p>
+					<h4>操作 : </h4>
+					<a href="{{ url('room/'.$room->id.'/edit') }}" class="btn btn-info">edit</a>
+					@can('admin')
+					<form action="{{ url('room/'.$room->id) }}" method="post" style="display:inline;">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<button type="submit" class="btn btn-danger">delete</button>
+					</form>
+					@endcan
+				</p>
+				@endif
 			</div>
 		</div>
 	</div>

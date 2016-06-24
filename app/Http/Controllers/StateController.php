@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\State;
 
-class StateController extends Controller
-{
+class StateController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
@@ -19,62 +18,61 @@ class StateController extends Controller
     }
     public function create() {
         $this->authorize('admin');
+        return view('state.create');
+    }
+    public function store(Request $request) {
+        $this->authorize('admin');
+
+        $this->validate($request, [
+            'label' => 'required|max:50',
+            'color' => 'required|integer'
+        ]);
+
+        $state = new State;
+        $state->label = $request->input('label');
+        $state->color = $request->input('color');
+        $state->save();
+
+        return 'finished';
+    }
+    /*
+    public function show($id) {
         //
     }
+    */
+    public function edit($id) {
+        $this->authorize('admin');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $state = State::findOrFail($id);
+        return view('state.edit', ['state' => $state]);
     }
+    public function update(Request $request, $id) {
+        $this->authorize('admin');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $this->validate($request, [
+            'label' => 'required|max:50',
+            'color' => 'required|integer'
+        ]);
+
+        $state = State::findOrFail($id);
+        $state->label = $request->input('label');
+        $state->color = $request->input('color');
+        $state->save();
+        return 'finished';
     }
+    public function destroy($id) {
+        $this->authorize('admin');
+        $state = State::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if($state->rooms->count() > 0) {
+            foreach($state->rooms as $room) {
+                $room->delete();
+            }
+            echo 'is set';
+        } else {
+            echo 'is null';
+        }
+        $state->delete();
+        return '<br>finished';
     }
 }

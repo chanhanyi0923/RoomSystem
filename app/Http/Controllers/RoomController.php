@@ -23,6 +23,12 @@ class RoomController extends Controller {
     }
     public function store(Request $request) {
         $this->authorize('admin');
+
+        $this->validate($request, [
+            'number' => 'required|unique:rooms|integer',
+            'state_id' => 'required|integer'
+        ]);
+
         $room = new Room;
         $room->number = $request->input('number');
         $room->state_id = $request->input('state_id');
@@ -34,18 +40,19 @@ class RoomController extends Controller {
     }
     */
     public function edit($id) {
-        $room = Room::find($id);
+        $room = Room::findOrFail($id);
         return view('room.edit', ['room' => $room, 'states' => State::all()]);
     }
     public function update(Request $request, $id) {
-        $room = Room::find($id);
+        $this->validate($request, ['state_id' => 'required|integer']);
+        $room = Room::findOrFail($id);
         $room->state_id = $request->input('state_id');
         $room->save();
         return 'Finished';
     }
     public function destroy($id) {
         $this->authorize('admin');
-        $room = Room::find($id);
+        $room = Room::findOrFail($id);
         $room->delete();
         return 'Finished';
     }
