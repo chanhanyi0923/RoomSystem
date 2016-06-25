@@ -2,6 +2,7 @@
 
 @section('content')
 <a href="{{ url('/state/create') }}" class="btn btn-success">Create</a>
+<hr>
 <table class="table">
 	<thead>
 		<tr>

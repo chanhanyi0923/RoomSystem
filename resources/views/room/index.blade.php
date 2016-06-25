@@ -7,6 +7,7 @@ RoomStates
 @section('content')
 @can('admin')
 <a href="{{ url('room/create') }}" class="btn btn-success">Create</a>
+<hr>
 @endcan
 <div class="row">
 	@foreach ($rooms as $room)
