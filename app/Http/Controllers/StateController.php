@@ -72,6 +72,6 @@ class StateController extends Controller {
         }
 
         $state->delete();
-        return '<br>finished';
+        return 'finished';
     }
 }

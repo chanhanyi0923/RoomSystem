@@ -14,4 +14,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin/{search?}/{id?}', 'AdminController@index');

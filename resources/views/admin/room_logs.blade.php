@@ -1,6 +1,20 @@
 @extends('layouts.form')
 
 @section('content')
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Users
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		@foreach($users as $user)
+		<li><a href="{{ url('/admin/user/'.$user->id) }}">{{ $user->name }}</a></li>
+		@endforeach
+	</ul>
+</div>
+
+<hr>
+
 <table class="table">
 	<thead>
 		<tr>
