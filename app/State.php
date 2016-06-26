@@ -9,4 +9,7 @@ class State extends Model {
     public function rooms() {
         return $this->hasMany('App\Room');
     }
+    public function room_logs() {
+        return $this->hasMany('App\RoomLog');
+    }
 }

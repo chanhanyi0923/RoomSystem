@@ -43,6 +43,9 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/room') }}">Room</a></li>
                     <li><a href="{{ url('/state') }}">State</a></li>
+                    @can('admin')
+                    <li><a href="{{ url('/admin') }}">Admin</a></li>
+                    @endcan
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -64,14 +64,13 @@ class StateController extends Controller {
         $this->authorize('admin');
         $state = State::findOrFail($id);
 
-        if($state->rooms->count() > 0) {
-            foreach($state->rooms as $room) {
-                $room->delete();
-            }
-            echo 'is set';
-        } else {
-            echo 'is null';
+        foreach($state->rooms as $room) {
+            $room->delete();
         }
+        foreach($state->room_logs as $room_log) {
+            $room_log->delete();
+        }
+
         $state->delete();
         return '<br>finished';
     }

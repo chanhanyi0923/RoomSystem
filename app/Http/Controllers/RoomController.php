@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Room;
 use App\State;
+use App\RoomLog;
 use Gate;
+use Auth;
 
 class RoomController extends Controller {
     public function __construct() {
@@ -33,6 +35,13 @@ class RoomController extends Controller {
         $room->number = $request->input('number');
         $room->state_id = $request->input('state_id');
         $room->save();
+
+        $room_log = new RoomLog;
+        $room_log->user_id = Auth::user()->id;
+        $room_log->room_id = $room->id;
+        $room_log->state_id = $request->input('state_id');
+        $room_log->save();
+
         return 'Finished';
     }
     /*
@@ -48,11 +57,23 @@ class RoomController extends Controller {
         $room = Room::findOrFail($id);
         $room->state_id = $request->input('state_id');
         $room->save();
+
+        $room_log = new RoomLog;
+        $room_log->user_id = Auth::user()->id;
+        $room_log->room_id = $room->id;
+        $room_log->state_id = $request->input('state_id');
+        $room_log->save();
+
         return 'Finished';
     }
     public function destroy($id) {
         $this->authorize('admin');
         $room = Room::findOrFail($id);
+
+        foreach($room->room_logs as $room_log) {
+            $room_log->delete();
+        }
+
         $room->delete();
         return 'Finished';
     }
