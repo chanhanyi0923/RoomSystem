@@ -12,6 +12,28 @@
 		@endforeach
 	</ul>
 </div>
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Rooms
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		@foreach($rooms as $room)
+		<li><a href="{{ url('/admin/room/'.$room->id) }}">{{ $room->number }}</a></li>
+		@endforeach
+	</ul>
+</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		States
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		@foreach($states as $state)
+		<li><a href="{{ url('/admin/state/'.$state->id) }}">{{ $state->label }}</a></li>
+		@endforeach
+	</ul>
+</div>
 
 <hr>
 
