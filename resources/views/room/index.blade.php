@@ -9,17 +9,27 @@ RoomStates
 <a href="{{ url('room/create') }}" class="btn btn-success">Create</a>
 <hr>
 @endcan
+<style>
+@media (min-width: 992px) {
+    .col-md-1-8 {
+		width: 12.5% !important;
+    }
+}
+.text-larger {
+	font-size:large;
+}
+</style>
 <div class="row">
 	@foreach ($rooms as $room)
-	<div class="col-md-2">
+	<div class="col-md-1 col-md-1-8">
 		<div class="panel panel-{{
 			array('default', 'primary', 'success', 'info', 'warning', 'danger')[ $room->state['color'] ]
 		}}">
 			<div class="panel-heading">
-				<h3 class="panel-title">房號 : {{ $room->number }}</h3>
+				<h3 class="panel-title text-larger">房號 : {{ $room->number }}</h3>
 			</div>
 			<div class="panel-body">
-				<h2>{{ $room->state->label }}</h2>
+				<h3>{{ $room->state->label }}</h3>
 				@if(Auth::check())
 				<hr>
 				<p>
