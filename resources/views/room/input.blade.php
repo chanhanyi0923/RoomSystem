@@ -1,26 +1,24 @@
 <div class="form-group">
-	<label>room state</label>
+	<label>房間狀態</label>
+	<br>
 	@foreach ($states as $state)
-	<div class="radio">
-		<label>
-			<input type="radio" name="state_id" value="{{ $state->id }}"{{
-				(isset($room) && $room->state->id == $state->id) ? ' checked' : ''
-			}}>
-			{{ $state->label }}
-		</label>
-	</div>
+	<label class="radio-inline">
+		<input type="radio" name="state_id" value="{{ $state->id }}"{{
+			(isset($room) && $room->state->id == $state->id) ? ' checked' : ''
+		}}>
+		{{ $state->label }}
+	</label>
 	@endforeach
 </div>
 <div class="form-group">
-	<label>room bed</label>
+	<label>床型</label>
+	<br>
 	@foreach ($beds as $bed)
-	<div class="radio">
-		<label>
-			<input type="radio" name="bed_id" value="{{ $bed->id }}"{{
-				(isset($room) && $room->bed->id == $bed->id) ? ' checked' : ''
-			}}>
-			{{ $bed->label }}
-		</label>
-	</div>
+	<label class="radio-inline">
+		<input type="radio" name="bed_id" value="{{ $bed->id }}"{{
+			(isset($room) && $room->bed->id == $bed->id) ? ' checked' : ''
+		}}>
+		{{ $bed->label }}
+	</label>
 	@endforeach
 </div>

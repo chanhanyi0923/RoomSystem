@@ -45,17 +45,18 @@
 		@endforeach
 	</ul>
 </div>
+<a class="btn btn-default" href="{{ url('/admin') }}">全部</a>
 
 <hr>
 
 <table class="table">
 	<thead>
 		<tr>
-			<td>User name</td>
-			<td>Room number</td>
-			<td>State</td>
-			<td>Bed</td>
-			<td>Time</td>
+			<th>User name</th>
+			<th>房號</th>
+			<th>狀態</th>
+			<th>床型</th>
+			<th>時間</th>
 		</tr>
 	</thead>
 	<tbody>

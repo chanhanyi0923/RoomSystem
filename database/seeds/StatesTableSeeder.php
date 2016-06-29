@@ -6,10 +6,11 @@ class StatesTableSeeder extends Seeder
 {
     public function run()
     {
-        for ($i = 0; $i < 10; $i ++) {
+        $state_label = ['住房', '清掃', '休息', '退房', '保養', '故障', '乾淨'];
+        for ($i = 0; $i < 7; $i ++) {
             DB::table('states')->insert([
                 'color' => ($i % 6),
-                'label' => '狀態' . ($i + 1)
+                'label' => $state_label[$i]
             ]);
         }
     }

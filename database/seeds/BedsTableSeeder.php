@@ -11,9 +11,10 @@ class BedsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i ++) {
+        $bed_label = ['一大', '二小', '一大二小', '二大'];
+        for ($i = 0; $i < 4; $i ++) {
             DB::table('beds')->insert([
-                'label' => 'Bed' . ($i + 1)
+                'label' => $bed_label[$i]
             ]);
         }
     }

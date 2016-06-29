@@ -16,8 +16,8 @@ class RoomsTableSeeder extends Seeder
                 for ($k = 0; $k < 8; $k ++) {
                     DB::table('rooms')->insert([
                         'number' => ($i + 1) * 100 + $j * 10 + $k + 1,
-                        'state_id' => rand(1, 10),
-                        'bed_id' => rand(1, 10)
+                        'state_id' => rand(1, 7),
+                        'bed_id' => rand(1, 4)
                     ]);
                 }
             }
