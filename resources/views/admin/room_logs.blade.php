@@ -34,6 +34,17 @@
 		@endforeach
 	</ul>
 </div>
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Beds
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		@foreach($beds as $bed)
+		<li><a href="{{ url('/admin/bed/'.$bed->id) }}">{{ $bed->label }}</a></li>
+		@endforeach
+	</ul>
+</div>
 
 <hr>
 
@@ -43,6 +54,7 @@
 			<td>User name</td>
 			<td>Room number</td>
 			<td>State</td>
+			<td>Bed</td>
 			<td>Time</td>
 		</tr>
 	</thead>
@@ -52,6 +64,7 @@
 			<td>{{ $room_log->user->name }}</td>
 			<td>{{ $room_log->room->number }}</td>
 			<td>{{ $room_log->state->label }}</td>
+			<td>{{ $room_log->bed->label }}</td>
 			<td>{{ $room_log->created_at }}</td>
 		</tr>
 		@endforeach

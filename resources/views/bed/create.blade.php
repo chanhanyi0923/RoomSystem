@@ -1,13 +1,12 @@
 @extends('layouts.form')
 
 @section('content')
-<form action="{{ url('room') }}" method="post">
+<form action="{{ url('bed') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group">
-		<label>room number</label>
-		<input type="text" name="number" class="form-control">
+		<label>bed label</label>
+		<input type="text" name="label" class="form-control">
 	</div>
-	@include('room.input')
 	<button type="submit" class="btn btn-primary">Create</button>
 </form>
 @endsection

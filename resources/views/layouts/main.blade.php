@@ -44,6 +44,7 @@
                     <li><a href="{{ url('/room') }}">Room</a></li>
                     @can('admin')
                     <li><a href="{{ url('/state') }}">State</a></li>
+                    <li><a href="{{ url('/bed') }}">Bed</a></li>
                     <li><a href="{{ url('/admin') }}">Admin</a></li>
                     @endcan
                 </ul>

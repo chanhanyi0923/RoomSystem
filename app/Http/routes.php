@@ -5,13 +5,10 @@ Route::get('/', function () {
 });
 */
 
+Route::auth();
+Route::resource('/bed', 'BedController', [ 'except' => ['show'] ]);
 Route::resource('/state', 'StateController', [ 'except' => ['show'] ]);
 Route::resource('/room', 'RoomController', [ 'except' => ['show'] ]);
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
 Route::get('/', 'HomeController@index');
-
+Route::get('/home', 'HomeController@index');
 Route::get('/admin/{search?}/{id?}', 'AdminController@index');

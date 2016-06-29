@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\State;
 
-class StateController extends Controller {
-    public function __construct() {
+class StateController extends Controller
+{
+    public function __construct()
+    {
         $this->middleware('auth');
     }
-    public function index() {
+    public function index()
+    {
         $this->authorize('admin');
         $states = State::all();
         return view('state.index', ['states' => $states]);
     }
-    public function create() {
+    public function create()
+    {
         $this->authorize('admin');
         return view('state.create');
     }
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->authorize('admin');
 
         $this->validate($request, [
@@ -40,13 +44,15 @@ class StateController extends Controller {
         //
     }
     */
-    public function edit($id) {
+    public function edit($id)
+    {
         $this->authorize('admin');
 
         $state = State::findOrFail($id);
         return view('state.edit', ['state' => $state]);
     }
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $this->authorize('admin');
 
         $this->validate($request, [
@@ -60,14 +66,15 @@ class StateController extends Controller {
         $state->save();
         return 'finished';
     }
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $this->authorize('admin');
         $state = State::findOrFail($id);
 
-        foreach($state->rooms as $room) {
+        foreach ($state->rooms as $room) {
             $room->delete();
         }
-        foreach($state->room_logs as $room_log) {
+        foreach ($state->room_logs as $room_log) {
             $room_log->delete();
         }
 

@@ -29,7 +29,11 @@ RoomStates
 				<h3 class="panel-title text-larger">房號 : {{ $room->number }}</h3>
 			</div>
 			<div class="panel-body">
-				<h3>{{ $room->state->label }}</h3>
+				<h3>
+                    {{ $room->state->label }}
+                    <br>
+                    {{ $room->bed->label }}
+                </h3>
 				@if(Auth::check())
 				<hr>
 				<p>

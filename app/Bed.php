@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model
+class Bed extends Model
 {
     public $timestamps = false;
     public function rooms()
