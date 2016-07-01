@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index($search = null, $id = null)
+    public function roomLog($search = null, $id = null)
     {
         $this->authorize('admin');
         if (isset($search) && isset($id)) {
@@ -35,5 +35,19 @@ class AdminController extends Controller
             'states' => State::all(),
             'beds' => Bed::all()
         ]);
+    }
+    public function manageUser()
+    {
+        $this->authorize('admin');
+        return view('admin.user', ['users' => User::all()]);
+    }
+    public function manageUserUpdate($id)
+    {
+        $this->authorize('admin');
+        $user = User::findOrFail($id);
+        $user->admin ^= 1;
+        $user->save();
+
+        return 'finished';
     }
 }
