@@ -12,6 +12,6 @@ Route::resource('/room', 'RoomController', [ 'except' => ['show'] ]);
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin/{search?}/{id?}', 'AdminController@roomLog');
-Route::get('/admin/manage_user', 'AdminController@manageUser');
-Route::put('/admin/manage_user/{$id}', 'AdminController@manageUserUpdate');
+Route::get('/room_log/{search?}/{id?}', 'AdminController@roomLog');
+Route::get('/manage_user', 'AdminController@manageUser');
+Route::put('/manage_user/{$id}', 'AdminController@manageUserUpdate');

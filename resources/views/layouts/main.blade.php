@@ -45,7 +45,7 @@
                     @can('admin')
                     <li><a href="{{ url('/state') }}">狀態</a></li>
                     <li><a href="{{ url('/bed') }}">床型</a></li>
-                    <li><a href="{{ url('/admin') }}">管理</a></li>
+                    <li><a href="{{ url('/room_log') }}">紀錄</a></li>
                     @endcan
                 </ul>
 
