@@ -15,7 +15,7 @@
 			<td>{{ $user->name }}</td>
 			<td>{{ $user->admin ? '是' : '否' }}</td>
 			<td>
-				<form action="{{ url('/admin/manage_user/'.$user->id) }}" method="POST" style="display:inline;">
+				<form action="{{ url('/manage_user/'.$user->id) }}" method="POST" style="display:inline;">
 					<input type="hidden" name="_method" value="PUT">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button class="btn btn-warning">變更權限</button>

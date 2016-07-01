@@ -44,6 +44,7 @@ class AdminController extends Controller
     public function manageUserUpdate($id)
     {
         $this->authorize('admin');
+
         $user = User::findOrFail($id);
         $user->admin ^= 1;
         $user->save();
