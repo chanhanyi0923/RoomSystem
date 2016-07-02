@@ -24,7 +24,7 @@
 	@foreach ($rooms as $room)
 	<div class="col-md-1 col-md-1-8 col-sm-3">
 		<div class="panel panel-{{
-			['default', 'primary', 'success', 'info', 'warning', 'danger'][ $room->state['color'] ]
+			['default', 'primary', 'success', 'info', 'warning', 'danger', 'purple'][ $room->state['color'] ]
 		}}">
 			<div class="panel-heading">
 				<h3 class="panel-title text-lg">房號 : {{ $room->number }}</h3>

@@ -1,6 +1,6 @@
 <div class="form-group">
 	<label class="col-md-12">顏色</label>
-	<?php $bs_color = array('default', 'primary', 'success', 'info', 'warning', 'danger'); ?>
+	<?php $bs_color = ['default', 'primary', 'success', 'info', 'warning', 'danger', 'purple']; ?>
 	@for($i = 0; $i < count($bs_color); $i++)
 	<div class="col-md-2">
 		<div class="radio">

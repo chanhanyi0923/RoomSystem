@@ -18,6 +18,27 @@
 	    .fa-btn {
 	        margin-right: 6px;
 	    }
+        .panel-purple {
+        	border-color:#FF96FF
+        }
+        .panel-purple>.panel-heading {
+        	color:#850085;
+        	background-color:#FFC9FF;
+        	border-color:#FF96FF
+        }
+        .panel-purple>.panel-heading+.panel-collapse>.panel-body {
+        	border-top-color:#FF96FF
+        }
+        .panel-purple>.panel-heading .badge {
+        	color:#FFC9FF;
+        	background-color:#850085
+        }
+        .panel-purple>.panel-footer+.panel-collapse>.panel-body {
+        	border-bottom-color:#FF96FF
+        }
+        .text-purple {
+            color:#850085
+        }
         @yield('style')
 	</style>
 </head>

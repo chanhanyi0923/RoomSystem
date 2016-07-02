@@ -20,7 +20,7 @@
 		<tr>
 			<td>{{ $state->label }}</td>
 			<td>
-				<span class="text-{{['muted', 'primary', 'success', 'info', 'warning', 'danger'][$state->color]}}" style="font-size:24px;">
+				<span class="text-{{['muted', 'primary', 'success', 'info', 'warning', 'danger', 'purple'][$state->color]}}" style="font-size:24px;">
 					<span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
 				</span>
 			</td>
