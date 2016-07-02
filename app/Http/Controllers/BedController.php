@@ -32,7 +32,7 @@ class BedController extends Controller
         $bed->label = $request->input('label');
         $bed->save();
 
-        return 'finished';
+        return view('layouts.finished');
     }
     /*
     public function show($id)
@@ -56,7 +56,7 @@ class BedController extends Controller
         $bed->label = $request->input('label');
         $bed->save();
 
-        return 'finished';
+        return view('layouts.finished');
     }
     public function destroy($id)
     {
@@ -71,5 +71,7 @@ class BedController extends Controller
         }
 
         $bed->delete();
+
+        return view('layouts.finished');
     }
 }

@@ -52,7 +52,7 @@ class RoomController extends Controller
         $room_log->bed_id = $request->input('bed_id');
         $room_log->save();
 
-        return 'Finished';
+        return view('layouts.finished');
     }
     /*
     public function show($id) {
@@ -81,7 +81,7 @@ class RoomController extends Controller
         $room_log->bed_id = $request->input('bed_id');
         $room_log->save();
 
-        return 'Finished';
+        return view('layouts.finished');
     }
     public function destroy($id)
     {
@@ -93,6 +93,6 @@ class RoomController extends Controller
         }
 
         $room->delete();
-        return 'Finished';
+        return view('layouts.finished');
     }
 }

@@ -37,7 +37,7 @@ class StateController extends Controller
         $state->color = $request->input('color');
         $state->save();
 
-        return 'finished';
+        return view('layouts.finished');
     }
     /*
     public function show($id) {
@@ -64,7 +64,7 @@ class StateController extends Controller
         $state->label = $request->input('label');
         $state->color = $request->input('color');
         $state->save();
-        return 'finished';
+        return view('layouts.finished');
     }
     public function destroy($id)
     {
@@ -79,6 +79,6 @@ class StateController extends Controller
         }
 
         $state->delete();
-        return 'finished';
+        return view('layouts.finished');
     }
 }

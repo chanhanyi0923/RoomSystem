@@ -49,6 +49,6 @@ class AdminController extends Controller
         $user->admin ^= 1;
         $user->save();
 
-        return 'finished';
+        return '<a href="#" onclick="history.back()">返回</a>';
     }
 }
